@@ -76,8 +76,6 @@ function UserInput(){
         <label><input type="radio" value="Delivery" checked={shipping === "Delivery"}
             onChange={InputShippingHandler} />Delivery</label>
             <p>Shipping: {shipping}</p>
-            
-
     </div>);
 }
 
