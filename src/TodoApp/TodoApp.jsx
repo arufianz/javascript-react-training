@@ -110,16 +110,16 @@ function TodoApp(){
     return(
         <div className={style.todoApp}>
             <h1>Todo App</h1>
+            <input type="text" id='taskInput' 
+            placeholder='Masukkan Tugas' onKeyDown={(e) => e.key === 'Enter' && AddTask()}
+            />
+            <button onClick={AddTask}>Tambah</button>
+            <hr />
             <ul>
                 {task.map((task, index) =>
                 <li key={index} onClick={() => DeleteTask(index)}>
                     {task}</li>)}
             </ul>
-            <input type="text" id='taskInput' 
-            placeholder='Masukkan Tugas' onKeyDown={(e) => e.key === 'Enter' && AddTask()}
-            />
-            <button onClick={AddTask}>Add Task</button>
-            <hr />
         </div>
     );
 }
