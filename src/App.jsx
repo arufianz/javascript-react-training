@@ -6,11 +6,12 @@ import List from './List.jsx'
 import {Counter, UserInput} from './Hook.jsx'
 import ColorPicker from './ColorPicker/ColorPicker.jsx'
 import TodoApp from './TodoApp/TodoApp.jsx'
-import { UpdateObjectState, UpdateArrayState } from './TodoApp/TodoApp.jsx'
+import { UpdateObjectState, UpdateArrayState, UpdateArrayOfObjectState } from './TodoApp/TodoApp.jsx'
 
 function App() {
   return(
     <>
+      <UpdateArrayOfObjectState/>
       <UpdateArrayState/>
       <UpdateObjectState/>
       <TodoApp/>
