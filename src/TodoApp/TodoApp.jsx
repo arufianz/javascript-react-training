@@ -9,16 +9,19 @@ export function UpdateArrayOfObjectState(){
     const [year, setYear] = useState('');
 
     function AddCarHandle(){
-
+        const newCar = {brand: brand, type: type, year: year};
+        setCars(c => [...c, newCar])
+        setBrand(''); setType(''); setYear('');
     }
-    function BrandHandle(){
 
+    function BrandHandle(e){
+        setBrand(e.target.value);
     }
-    function TypeHandle(){
-
+    function TypeHandle(e){
+        setType(e.target.value);
     }
-    function YearHandle(){
-
+    function YearHandle(e){
+        setYear(e.target.value);
     }
 
     return(
@@ -28,6 +31,10 @@ export function UpdateArrayOfObjectState(){
             {cars.map((car, index) => 
             <li key={index}>{car.brand} {car.type} {car.year}</li>)}
         </ul>
+        <input type="text" id='brandInput' value={brand} onChange={BrandHandle}/>
+        <input type="text" id='typeInput' value={type} onChange={TypeHandle} />
+        <input type="number" id='yearInput' value={year} onChange={YearHandle} />
+        <button onClick={AddCarHandle}>Add Car</button>
         </div>
     )
 }
@@ -87,20 +94,31 @@ export function UpdateObjectState(){
 }
 
 function TodoApp(){
-    const [task, setTask] = useState('');
+    const [task, setTask] = useState([]);
     
     function AddTask(e){
-        
+        const newTask = document.getElementById('taskInput').value;
+        if (newTask == '')
+            return;
+        document.getElementById('taskInput').value =  '';
+        setTask(t => [...t, newTask]);
     }
 
     function DeleteTask(e){
-        
+        setTask(task.filter((_, i) => i !== e));
     }
-
-
     return(
         <div className={style.todoApp}>
             <h1>Todo App</h1>
+            <ul>
+                {task.map((task, index) =>
+                <li key={index} onClick={() => DeleteTask(index)}>
+                    {task}</li>)}
+            </ul>
+            <input type="text" id='taskInput' 
+            placeholder='Masukkan Tugas' onKeyDown={(e) => e.key === 'Enter' && AddTask()}
+            />
+            <button onClick={AddTask}>Add Task</button>
             <hr />
         </div>
     );
