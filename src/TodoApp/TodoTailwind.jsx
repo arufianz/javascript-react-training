@@ -1,6 +1,6 @@
 import { useState} from 'react';
 function TodoTailwind(){
-    const [task, setTask] = useState(["Test", "Test2", "Test3 lorem ipsum dolor sit amet"]);
+    const [task, setTask] = useState(["Test", "Test2", "Test3",]);
     
     function AddTask(e){
         const newTask = document.getElementById('taskInput').value;
